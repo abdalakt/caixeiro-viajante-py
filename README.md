@@ -1,14 +1,39 @@
-Código criado para a disciplina de Análise de Algoritmos do Mestrado em Computaçao Aplicada da UNIVALI 2026/01.
-Alunos: 
-- Katia Lorenz
-- Leticia Rama
-- Ricardo Arruda
+# Algoritmos Heurísticos aplicados ao Problema do Caixeiro Viajante (TSP)
 
-Atividade: Implementar a solução do caixeiro viajante utilizando uma das heurísticas apresentadas em aula.
+## Descrição
 
-Solução:
-A heurística utilizada foi a do vizinho mais próximo.
-O código faz a leitura de uma tabela de distancias em csv, executa o algoritmo mostrando o trajeto, distancia entre as cidades percorridas e o valor total do percurso.
+Este repositório apresenta a implementação de um algoritmo heurístico para a resolução do Problema do Caixeiro Viajante (Travelling Salesman Problem – TSP). O trabalho foi desenvolvido como atividade avaliativa da disciplina **Análise de Algoritmos**, no âmbito do Mestrado em Computação Aplicada da Universidade do Vale do Itajaí (UNIVALI), no período letivo 2026/01.
 
-Código disponível no GitHub:
+## Autores
+
+- Katia Lorenz  
+- Letícia Zorzi Rama  
+- Ricardo Arruda  
+
+## Orientação
+
+Prof. Dr. Rudimar Luís Scaranto Dazzi
+
+## Objetivo
+
+O objetivo da atividade consiste na implementação de uma abordagem heurística para a solução do Problema do Caixeiro Viajante, conforme proposto em aula, visando explorar estratégias aproximadas para problemas de otimização combinatória.
+
+## Metodologia
+
+A heurística adotada foi o **método do vizinho mais próximo** (Nearest Neighbor), que consiste em selecionar iterativamente o vértice adjacente não visitado com menor distância em relação ao vértice atual.
+
+## Funcionamento
+
+O algoritmo desenvolvido realiza as seguintes etapas:
+
+1. Leitura de uma matriz de distâncias a partir de um arquivo no formato `.csv`;  
+2. Execução da heurística do vizinho mais próximo;  
+3. Determinação do trajeto percorrido entre as cidades;  
+4. Cálculo das distâncias individuais entre os vértices visitados;  
+5. Cálculo do custo total do percurso.
+
+## Código-fonte
+
+O código-fonte da implementação está disponível no repositório:
+
 https://github.com/abdalakt/caixeiro-viajante-py/blob/master/PCV_KatiaLorenzLeticiaRamaRicardoArruda.py
