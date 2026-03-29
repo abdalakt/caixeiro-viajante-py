@@ -1,0 +1,7 @@
+# Ignorar arquivos desnecessários
+*.zip
+*_full.py
+
+# Python
+__pycache__/
+*.pyc
