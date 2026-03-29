@@ -1,7 +1,7 @@
 import csv                                                                  #adiciona biblioteca para ler o csv
 import sys                                                                  #adiciona biblioteca para passar o nome de arquivo no terminal, caso nao seja o arquivo cidades.csv
 
-def ler_distancias_csv(caminho_arquivo):                                    # define uma função que recebe o caminho do arquivo CSV
+def ler_distancias_csv(caminho_arquivo):                                    # define uma função que recebe o caminho do arquivo CSV e le as distancias entre as cidades
     distancias = {}                                                         # cria um dicionário vazio para guardar as distâncias entre cidades
 
     with open(caminho_arquivo, newline='', encoding='utf-8-sig') as f:      # abre o arquivo CSV  # newline='' evita problemas de quebra de linha # encoding='utf-8-sig' se o arquivo foi crado no excel
