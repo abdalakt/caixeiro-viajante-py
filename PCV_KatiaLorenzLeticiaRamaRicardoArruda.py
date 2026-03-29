@@ -62,4 +62,4 @@ trajeto, custo_total = vizinho_mais_proximo(cidades, distancias, cidade_inicio) 
 print("=" * 50)                                     # imprime frufru  
 print(f"Trajeto: {' → '.join(trajeto)}")            # imprime o caminho completo
 print(f"Custo total: {custo_total:.0f} km")         # imprime o custo total arredondado
-print("=" * 50 + "\n")                              # imprime frufru
+print("=" * 50 + "\n")                              # imprime frufru  
