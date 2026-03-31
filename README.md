@@ -37,3 +37,31 @@ O algoritmo desenvolvido realiza as seguintes etapas:
 O código-fonte da implementação está disponível no repositório:
 
 https://github.com/abdalakt/caixeiro-viajante-py/blob/master/PCV_KatiaLorenzLeticiaRamaRicardoArruda.py
+
+
+## Visualização Interativa
+
+Como complemento à implementação do algoritmo heurístico, foi desenvolvida uma interface web interativa para visualização do percurso gerado.
+
+A visualização foi implementada utilizando **HTML, CSS e JavaScript**, com apoio da biblioteca **Leaflet**, permitindo a exibição geográfica das cidades e a animação do trajeto calculado pelo algoritmo.
+
+### Funcionalidades da visualização
+
+- Exibição das cidades em um mapa interativo do Brasil;  
+- Animação passo a passo do percurso gerado pela heurística do vizinho mais próximo;  
+- Destaque visual das cidades visitadas e da cidade atual;  
+- Exibição do caminho percorrido em tempo real;  
+- Cálculo e apresentação do custo acumulado do trajeto;  
+- Apresentação da matriz de distâncias utilizada no problema.
+
+### Arquivo da visualização
+
+A interface pode ser acessada através do arquivo: [Visualização interativa (HTML)](./pcv_cidades2_mapa.html)
+
+
+
+### Objetivo da visualização
+
+A inclusão da interface visual tem como finalidade facilitar a compreensão do comportamento do algoritmo, permitindo uma análise mais intuitiva da construção do trajeto e das decisões tomadas a cada etapa da heurística.
+
+Essa abordagem contribui para a interpretação dos resultados e para a apresentação didática do problema no contexto acadêmico.
