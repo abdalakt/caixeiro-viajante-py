@@ -8,7 +8,7 @@ Este repositório apresenta a implementação de um algoritmo heurístico para a
 
 - Katia Lorenz  
 - Letícia Zorzi Rama  
-- Ricardo Arruda  
+- Ricardo Arruda Júnior
 
 ## Orientação
 
