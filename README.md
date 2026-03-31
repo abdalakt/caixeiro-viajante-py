@@ -45,6 +45,9 @@ Como complemento à implementação do algoritmo heurístico, foi desenvolvida u
 
 A visualização foi implementada utilizando **HTML, CSS e JavaScript**, com apoio da biblioteca **Leaflet**, permitindo a exibição geográfica das cidades e a animação do trajeto calculado pelo algoritmo.
 
+A visualização em HTML também foi estruturada com comentários didáticos no código, com o objetivo de facilitar a compreensão da lógica do algoritmo, da matriz de distâncias e da animação do percurso.
+
+
 ### Funcionalidades da visualização
 
 - Exibição das cidades em um mapa interativo do Brasil;  
@@ -61,6 +64,7 @@ A interface pode ser acessada através do arquivo: [Visualização interativa (H
 
 
 ### Objetivo da visualização
+
 
 A inclusão da interface visual tem como finalidade facilitar a compreensão do comportamento do algoritmo, permitindo uma análise mais intuitiva da construção do trajeto e das decisões tomadas a cada etapa da heurística.
 
