@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    =========================================================
+    CONFIGURAÇÕES BÁSICAS DO DOCUMENTO
+    =========================================================
+    - Define o conjunto de caracteres como UTF-8
+    - Ajusta a visualização para dispositivos móveis
+    - Define o título exibido na aba do navegador
+    =========================================================
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCV - Cidades do Brasil</title>
+
+  <!--
+    =========================================================
+    BIBLIOTECAS EXTERNAS
+    =========================================================
+    Leaflet:
+    - Biblioteca JavaScript para criação de mapas interativos
+    - O CSS cuida do estilo visual do mapa
+    - O JS cuida da lógica do mapa, marcadores e linhas
+    =========================================================
+  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    /*
+      =========================================================
+      ESTILO GERAL DA PÁGINA
+      =========================================================
+      - Remove margens padrão do navegador
+      - Define a fonte principal
+      - Define cor de fundo e cor padrão do texto
+      =========================================================
+    */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    /*
+      =========================================================
+      CONTAINER PRINCIPAL
+      =========================================================
+      - Usa flexbox para dividir a tela em duas áreas:
+        1) mapa
+        2) painel lateral
+      - flex-wrap permite quebrar o layout em telas menores
+      =========================================================
+    */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+    }
+
+    /*
+      =========================================================
+      ÁREA DO MAPA
+      =========================================================
+      - Ocupa mais espaço horizontal que o painel
+      - min-width evita que fique estreito demais
+      =========================================================
+    */
+    .mapa-area {
+      flex: 2;
+      min-width: 700px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /*
+      =========================================================
+      PAINEL LATERAL
+      =========================================================
+      - Exibe informações sobre o algoritmo
+      - fundo branco para destacar o conteúdo
+      - borda à esquerda para separação visual
+      =========================================================
+    */
+    .painel {
+      flex: 1;
+      min-width: 320px;
+      background: white;
+      border-left: 1px solid #ddd;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /*
+      =========================================================
+      TÍTULO PRINCIPAL
+      =========================================================
+      - Usa cor institucional azul escuro
+      =========================================================
+    */
+    h1 {
+      margin-top: 0;
+      color: #1f4e79;
+      font-size: 28px;
+    }
+
+    /*
+      =========================================================
+      SUBTÍTULO / INFORMAÇÕES ACADÊMICAS
+      =========================================================
+      - Reduz o espaçamento vertical entre linhas
+      =========================================================
+    */
+    .subtitulo p {
+      margin: 4px 0;
+    }
+
+    /*
+      =========================================================
+      ÁREA DO MAPA
+      =========================================================
+      - Define largura total
+      - altura fixa
+      - bordas arredondadas
+      =========================================================
+    */
+    #map {
+      width: 100%;
+      height: 600px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
+    }
+
+    /*
+      =========================================================
+      ÁREA DOS BOTÕES
+      =========================================================
+      - Organiza os botões lado a lado
+      - gap cria espaço entre eles
+      =========================================================
+    */
+    .botoes {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /*
+      =========================================================
+      BOTÕES
+      =========================================================
+      - Define aparência dos botões
+      - cursor pointer indica elemento clicável
+      =========================================================
+    */
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #1f4e79;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /*
+      =========================================================
+      EFEITO HOVER NOS BOTÕES
+      =========================================================
+      - Altera a cor quando o mouse passa por cima
+      =========================================================
+    */
+    button:hover {
+      background: #163a59;
+    }
+
+    /*
+      =========================================================
+      CAIXAS DO PAINEL
+      =========================================================
+      - Cada box agrupa um tipo de informação
+      =========================================================
+    */
+    .box {
+      background: #f8fafc;
+      border: 1px solid #dbe3ea;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+
+    /*
+      =========================================================
+      ESTILO DA MATRIZ DE DISTÂNCIAS
+      =========================================================
+      - Usa fonte monoespaçada para alinhar melhor os valores
+      - pre-wrap preserva espaçamento e quebra de linha
+      =========================================================
+    */
+    .matriz {
+      font-family: monospace;
+      white-space: pre-wrap;
+      background: #f3f3f3;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /*
+      =========================================================
+      DESTAQUE PARA O TRAJETO FINAL
+      =========================================================
+      =========================================================
+    */
+    .trajeto-final {
+      font-weight: bold;
+      color: #163a59;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    =========================================================
+    ESTRUTURA PRINCIPAL DA PÁGINA
+    =========================================================
+    A página é dividida em:
+    - área do mapa
+    - painel lateral de informações
+    =========================================================
+  -->
+  <div class="container">
+
+    <!--
+      =========================================================
+      ÁREA ESQUERDA: MAPA + TÍTULO + BOTÕES
+      =========================================================
+    -->
+    <div class="mapa-area">
+      <h1>Algoritmos Heurísticos Aplicados ao Problema do Caixeiro Viajante (TSP)</h1>
+
+      <!--
+        =======================================================
+        INFORMAÇÕES ACADÊMICAS
+        =======================================================
+        Servem para contextualizar o trabalho
+        =======================================================
+      -->
+      <div class="subtitulo">
+        <p><strong>UNIVALI</strong></p>
+        <p>Mestrado em Computação Aplicada</p>
+        <p>Disciplina: Análise de Algoritmos</p>
+        <p>Prof. Dr. Rudimar Luís Scaranto Dazzi</p>
+        <p>Mestrandos: Katia Lorenz, Letícia Zorzi Rama e Ricardo Arruda</p>
+        <p>Período letivo: 2026/01</p>
+        <p><strong>Heurística:</strong> Vizinho mais próximo</p>
+      </div>
+
+      <!--
+        =======================================================
+        DIV DO MAPA
+        =======================================================
+        O Leaflet usará esta área para desenhar o mapa
+        =======================================================
+      -->
+      <div id="map"></div>
+
+      <!--
+        =======================================================
+        BOTÕES DE CONTROLE DA ANIMAÇÃO
+        =======================================================
+        - iniciarAnimacao(): roda tudo automaticamente
+        - proximoPasso(): avança manualmente
+        - reiniciar(): volta ao estado inicial
+        =======================================================
+      -->
+      <div class="botoes">
+        <button onclick="iniciarAnimacao()">Iniciar animação</button>
+        <button onclick="proximoPasso()">Próximo passo</button>
+        <button onclick="reiniciar()">Reiniciar</button>
+      </div>
+    </div>
+
+    <!--
+      =========================================================
+      ÁREA DIREITA: PAINEL LATERAL
+      =========================================================
+      Exibe o estado atual do algoritmo
+      =========================================================
+    -->
+    <div class="painel">
+      <div class="box">
+        <h3>Passo atual</h3>
+        <p id="mensagem">Clique em "Iniciar animação" ou "Próximo passo".</p>
+      </div>
+
+      <div class="box">
+        <h3>Caminho atual</h3>
+        <p id="caminhoTexto">-</p>
+      </div>
+
+      <div class="box">
+        <h3>Custo total acumulado</h3>
+        <p id="custoTexto">0 km</p>
+      </div>
+
+      <div class="box">
+        <h3>Visitadas</h3>
+        <p id="visitadasTexto">-</p>
+      </div>
+
+      <div class="box">
+        <h3>Trajeto final esperado</h3>
+        <p class="trajeto-final">
+          SaoPaulo → Curitiba → PortoAlegre → RioDeJaneiro → BeloHorizonte →
+          Brasilia → Salvador → Recife → Fortaleza → Manaus → SaoPaulo
+        </p>
+        <p><strong>Custo total:</strong> 14090 km</p>
+      </div>
+
+      <div class="box">
+        <h3>Matriz de distâncias</h3>
+        <div class="matriz" id="matrizTexto"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================
+    // DADOS DAS CIDADES
+    // =========================================================
+    // Cada objeto representa um vértice do problema.
+    // Além do nome, temos latitude e longitude para posicioná-lo no mapa.
+    // A ordem das cidades neste vetor é importante, pois será usada também
+    // na matriz de distâncias.
+    // =========================================================
+
+    const cidades = [
+      { nome: "SaoPaulo", lat: -23.5505, lon: -46.6333 },
+      { nome: "RioDeJaneiro", lat: -22.9068, lon: -43.1729 },
+      { nome: "BeloHorizonte", lat: -19.9167, lon: -43.9345 },
+      { nome: "Brasilia", lat: -15.7939, lon: -47.8828 },
+      { nome: "Curitiba", lat: -25.4284, lon: -49.2733 },
+      { nome: "PortoAlegre", lat: -30.0346, lon: -51.2177 },
+      { nome: "Salvador", lat: -12.9777, lon: -38.5016 },
+      { nome: "Fortaleza", lat: -3.7319, lon: -38.5267 },
+      { nome: "Manaus", lat: -3.1190, lon: -60.0217 },
+      { nome: "Recife", lat: -8.0476, lon: -34.8770 }
+    ];
+
+    // =========================================================
+    // MATRIZ DE DISTÂNCIAS
+    // =========================================================
+    // distancias[i][j] representa a distância da cidade i para a cidade j.
+    //
+    // Exemplo:
+    // distancias[0][1] = distância de SaoPaulo para RioDeJaneiro
+    //
+    // Essa matriz representa o grafo ponderado do problema.
+    // =========================================================
+
+    const distancias = [
+      [0, 430, 586, 1015, 410, 1119, 1962, 2368, 3860, 2660],
+      [430, 0, 440, 1148, 852, 1540, 1649, 2190, 2849, 2338],
+      [586, 440, 0, 740, 1004, 1712, 1372, 2528, 2556, 2061],
+      [1015, 1148, 740, 0, 1366, 2027, 1450, 2200, 1930, 2135],
+      [410, 852, 1004, 1366, 0, 710, 2385, 3540, 3940, 3075],
+      [1119, 1540, 1712, 2027, 710, 0, 3170, 4245, 4560, 3779],
+      [1962, 1649, 1372, 1450, 2385, 3170, 0, 1389, 3090, 800],
+      [2368, 2190, 2528, 2200, 3540, 4245, 1389, 0, 3600, 540],
+      [3860, 2849, 2556, 1930, 3940, 4560, 3090, 3600, 0, 4510],
+      [2660, 2338, 2061, 2135, 3075, 3779, 800, 540, 4510, 0]
+    ];
+
+    // =========================================================
+    // ORDEM DE VISITA GERADA PELO PYTHON
+    // =========================================================
+    // Este vetor representa o trajeto final encontrado
+    // pela heurística do vizinho mais próximo.
+    //
+    // Cada número corresponde ao índice de uma cidade no vetor "cidades".
+    //
+    // Exemplo:
+    // 0 = SaoPaulo
+    // 4 = Curitiba
+    // 5 = PortoAlegre
+    // ...
+    // =========================================================
+
+    const ordemVisita = [0, 4, 5, 1, 2, 3, 6, 9, 7, 8, 0];
+
+    // =========================================================
+    // INICIALIZAÇÃO DO MAPA
+    // =========================================================
+    // O mapa é centralizado aproximadamente no Brasil.
+    // O zoom 4 permite visualizar bem o país inteiro.
+    // =========================================================
+
+    let map = L.map('map').setView([-15, -50], 4);
+
+    // =========================================================
+    // CAMADA BASE DO MAPA
+    // =========================================================
+    // Usa OpenStreetMap como fonte cartográfica.
+    // =========================================================
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // =========================================================
+    // VETORES AUXILIARES
+    // =========================================================
+    // marcadores: guarda os marcadores desenhados no mapa
+    // linhas: guarda as linhas do trajeto desenhadas no mapa
+    // =========================================================
+
+    let marcadores = [];
+    let linhas = [];
+
+    // =========================================================
+    // VARIÁVEIS DE CONTROLE DA ANIMAÇÃO
+    // =========================================================
+    // passoAtual: indica em que etapa estamos
+    // caminho: caminho construído até o momento
+    // visitadas: cidades já visitadas
+    // custoTotal: soma acumulada das distâncias
+    // animando: evita iniciar duas animações ao mesmo tempo
+    // finalizado: indica se o percurso foi concluído
+    // =========================================================
+
+    let passoAtual = 0;
+    let caminho = [ordemVisita[0]];
+    let visitadas = [ordemVisita[0]];
+    let custoTotal = 0;
+    let animando = false;
+    let finalizado = false;
+
+    // =========================================================
+    // FUNÇÃO: desenharMarcadores()
+    // =========================================================
+    // Responsável por desenhar os pontos das cidades no mapa.
+    //
+    // Cores usadas:
+    // - cinza: ainda não visitada
+    // - verde: já visitada
+    // - laranja: cidade atual
+    // =========================================================
+
+    function desenharMarcadores() {
+      // Remove marcadores antigos antes de redesenhar
+      marcadores.forEach(m => map.removeLayer(m));
+      marcadores = [];
+
+      for (let i = 0; i < cidades.length; i++) {
+        let cor = "gray";
+
+        if (!finalizado && i === caminho[caminho.length - 1]) {
+          cor = "orange";
+        } else if (visitadas.includes(i)) {
+          cor = "green";
+        }
+
+        const marcador = L.circleMarker([cidades[i].lat, cidades[i].lon], {
+          radius: 8,
+          color: "#263238",
+          weight: 2,
+          fillColor: cor,
+          fillOpacity: 0.9
+        }).addTo(map);
+
+        marcador.bindPopup(`<strong>${cidades[i].nome}</strong>`);
+        marcadores.push(marcador);
+      }
+    }
+
+    // =========================================================
+    // FUNÇÃO: desenharLinhas()
+    // =========================================================
+    // Desenha no mapa as arestas já percorridas pelo algoritmo.
+    // Cada linha vermelha representa um trecho do trajeto.
+    // =========================================================
+
+    function desenharLinhas() {
+      // Remove linhas antigas antes de redesenhar
+      linhas.forEach(l => map.removeLayer(l));
+      linhas = [];
+
+      for (let i = 0; i < caminho.length - 1; i++) {
+        const origem = cidades[caminho[i]];
+        const destino = cidades[caminho[i + 1]];
+
+        const linha = L.polyline(
+          [
+            [origem.lat, origem.lon],
+            [destino.lat, destino.lon]
+          ],
+          {
+            color: "red",
+            weight: 4
+          }
+        ).addTo(map);
+
+        linhas.push(linha);
+      }
+    }
+
+    // =========================================================
+    // FUNÇÃO: atualizarMapa()
+    // =========================================================
+    // Atualiza completamente a visualização cartográfica:
+    // 1. redesenha marcadores
+    // 2. redesenha linhas
+    // =========================================================
+
+    function atualizarMapa() {
+      desenharMarcadores();
+      desenharLinhas();
+    }
+
+    // =========================================================
+    // FUNÇÃO: atualizarPainel(mensagem)
+    // =========================================================
+    // Atualiza o conteúdo textual do painel lateral:
+    // - mensagem atual
+    // - caminho construído
+    // - custo acumulado
+    // - cidades visitadas
+    // =========================================================
+
+    function atualizarPainel(mensagem) {
+      document.getElementById("mensagem").innerText = mensagem;
+      document.getElementById("caminhoTexto").innerText =
+        caminho.map(i => cidades[i].nome).join(" → ");
+      document.getElementById("custoTexto").innerText = `${custoTotal} km`;
+      document.getElementById("visitadasTexto").innerText =
+        visitadas.map(i => cidades[i].nome).join(", ");
+    }
+
+    // =========================================================
+    // FUNÇÃO: mostrarMatriz()
+    // =========================================================
+    // Mostra a matriz de distâncias em formato textual.
+    // Isso ajuda o usuário a relacionar os dados do problema
+    // com o comportamento do algoritmo.
+    // =========================================================
+
+    function mostrarMatriz() {
+      let texto = "                 SP   RJ   BH   BSB  CTB  POA  SSA  FOR  MAO  REC\n";
+      texto += "SaoPaulo       [   0, 430, 586,1015, 410,1119,1962,2368,3860,2660 ]\n";
+      texto += "RioDeJaneiro   [ 430,   0, 440,1148, 852,1540,1649,2190,2849,2338 ]\n";
+      texto += "BeloHorizonte  [ 586, 440,   0, 740,1004,1712,1372,2528,2556,2061 ]\n";
+      texto += "Brasilia       [1015,1148, 740,   0,1366,2027,1450,2200,1930,2135 ]\n";
+      texto += "Curitiba       [ 410, 852,1004,1366,   0, 710,2385,3540,3940,3075 ]\n";
+      texto += "PortoAlegre    [1119,1540,1712,2027, 710,   0,3170,4245,4560,3779 ]\n";
+      texto += "Salvador       [1962,1649,1372,1450,2385,3170,   0,1389,3090, 800 ]\n";
+      texto += "Fortaleza      [2368,2190,2528,2200,3540,4245,1389,   0,3600, 540 ]\n";
+      texto += "Manaus         [3860,2849,2556,1930,3940,4560,3090,3600,   0,4510 ]\n";
+      texto += "Recife         [2660,2338,2061,2135,3075,3779, 800, 540,4510,   0 ]";
+      document.getElementById("matrizTexto").innerText = texto;
+    }
+
+    // =========================================================
+    // FUNÇÃO: reiniciar()
+    // =========================================================
+    // Restaura o sistema ao estado inicial:
+    // - volta para a cidade inicial
+    // - limpa custo acumulado
+    // - limpa o caminho parcial
+    // - remove finalização da animação
+    // =========================================================
+
+    function reiniciar() {
+      passoAtual = 0;
+      caminho = [ordemVisita[0]];
+      visitadas = [ordemVisita[0]];
+      custoTotal = 0;
+      animando = false;
+      finalizado = false;
+
+      atualizarPainel(`Cidade inicial: ${cidades[ordemVisita[0]].nome}.`);
+      atualizarMapa();
+      mostrarMatriz();
+    }
+
+    // =========================================================
+    // FUNÇÃO: proximoPasso()
+    // =========================================================
+    // Executa exatamente um passo da animação.
+    //
+    // Fluxo:
+    // 1. verifica se o caminho já acabou
+    // 2. pega origem e destino do passo atual
+    // 3. soma a distância ao custo total
+    // 4. atualiza caminho e visitadas
+    // 5. atualiza painel e mapa
+    // =========================================================
+
+    function proximoPasso() {
+      if (finalizado) {
+        atualizarPainel("O caminho já foi concluído.");
+        return;
+      }
+
+      if (passoAtual >= ordemVisita.length - 1) {
+        finalizado = true;
+        atualizarPainel(
+          `Caminho concluído: ${caminho.map(i => cidades[i].nome).join(" → ")}. Custo total = ${custoTotal} km.`
+        );
+        return;
+      }
+
+      const origem = ordemVisita[passoAtual];
+      const destino = ordemVisita[passoAtual + 1];
+      const distancia = distancias[origem][destino];
+
+      custoTotal += distancia;
+      caminho.push(destino);
+
+      if (!visitadas.includes(destino)) {
+        visitadas.push(destino);
+      }
+
+      passoAtual++;
+
+      const msgRetorno = passoAtual === ordemVisita.length - 1 ? " [retorno]" : "";
+      atualizarPainel(
+        `Saindo de ${cidades[origem].nome}, segue para ${cidades[destino].nome}, com custo ${distancia} km${msgRetorno}.`
+      );
+
+      atualizarMapa();
+
+      if (passoAtual === ordemVisita.length - 1) {
+        finalizado = true;
+      }
+    }
+
+    // =========================================================
+    // FUNÇÃO: iniciarAnimacao()
+    // =========================================================
+    // Executa os passos automaticamente em sequência.
+    //
+    // Usa setTimeout para gerar uma pausa entre os passos,
+    // simulando a construção progressiva do trajeto.
+    // =========================================================
+
+    function iniciarAnimacao() {
+      if (animando) return;
+      animando = true;
+
+      function executar() {
+        if (!finalizado) {
+          proximoPasso();
+          setTimeout(executar, 1600);
+        } else {
+          animando = false;
+          atualizarPainel(
+            `Caminho concluído: ${caminho.map(i => cidades[i].nome).join(" → ")}. Custo total = ${custoTotal} km.`
+          );
+        }
+      }
+
+      executar();
+    }
+
+    // =========================================================
+    // INICIALIZAÇÃO DA PÁGINA
+    // =========================================================
+    // Ao carregar a página:
+    // - reseta os dados
+    // - desenha o mapa
+    // - mostra a matriz
+    // =========================================================
+    
+    reiniciar();
+  </script>
+</body>
+</html>
