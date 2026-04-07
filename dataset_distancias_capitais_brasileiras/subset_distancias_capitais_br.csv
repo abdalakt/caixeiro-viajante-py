@@ -1,0 +1,189 @@
+"modal","nome_o","nome_d","km","minutos","kmh"
+"Rodoviário","São Luís","Teresina",427.69,323,80
+"Rodoviário","São Luís","Fortaleza",893.9,622,87
+"Rodoviário","São Luís","Recife",1582.57,1154,82
+"Rodoviário","São Luís","Salvador",1579.59,1188,80
+"Rodoviário","São Luís","Belo Horizonte",2407.34,1781,81
+"Rodoviário","São Luís","Rio de Janeiro",2837.16,2102,82
+"Rodoviário","São Luís","São Paulo",2984.15,2092,87
+"Rodoviário","São Luís","Curitiba",3306.83,2338,86
+"Rodoviário","São Luís","Porto Alegre",4067.97,2833,87
+"Rodoviário","São Luís","Brasília",2012.63,1444,84
+"Rodoviário","Vitória","Rio de Janeiro",519.76,434,74
+"Rodoviário","Vitória","São Paulo",954.59,742,80
+"Rodoviário","Vitória","Florianópolis",1660.55,1250,83
+"Rodoviário","Vitória","Porto Alegre",2106.53,1544,85
+"Rodoviário","Vitória","Cuiabá",2102.59,1516,84
+"Rodoviário","Vitória","Brasília",1249.29,861,89
+"Rodoviário","Rio de Janeiro","São Paulo",448.94,328,87
+"Rodoviário","Rio de Janeiro","Curitiba",868.39,637,86
+"Rodoviário","Rio de Janeiro","Florianópolis",1154.9,836,87
+"Rodoviário","Rio de Janeiro","Porto Alegre",1600.88,1129,88
+"Rodoviário","Rio de Janeiro","Campo Grande",1438.34,988,92
+"Rodoviário","Rio de Janeiro","Cuiabá",1953.69,1375,88
+"Rodoviário","Rio de Janeiro","Goiânia",1304.84,878,93
+"Rodoviário","Rio de Janeiro","Brasília",1174.44,802,92
+"Rodoviário","Teresina","Fortaleza",595.29,429,84
+"Rodoviário","Teresina","Recife",1154.93,834,83
+"Rodoviário","Teresina","Salvador",1151.94,867,80
+"Rodoviário","Teresina","Belo Horizonte",2019.31,1483,82
+"Rodoviário","Teresina","Rio de Janeiro",2449.12,1804,82
+"Rodoviário","Teresina","São Paulo",2655.24,1827,89
+"Rodoviário","Teresina","Brasília",1683.71,1178,86
+"Rodoviário","Fortaleza","Natal",543.09,411,80
+"Rodoviário","Fortaleza","Recife",797.09,586,82
+"Rodoviário","Fortaleza","Maceió",940.39,691,82
+"Rodoviário","Fortaleza","Salvador",1203.63,887,82
+"Rodoviário","Fortaleza","Belo Horizonte",2315.97,1705,82
+"Rodoviário","Fortaleza","Rio de Janeiro",2602.52,1910,82
+"Rodoviário","Fortaleza","São Paulo",2904.83,2106,84
+"Rodoviário","Fortaleza","Curitiba",3227.51,2352,84
+"Rodoviário","Fortaleza","Porto Alegre",3988.65,2848,85
+"Rodoviário","Fortaleza","Goiânia",2135.65,1603,80
+"Rodoviário","Fortaleza","Brasília",1933.31,1458,80
+"Rodoviário","Campo Grande","Fortaleza",319.08,245,79
+"Rodoviário","Campo Grande","Natal",266.2,204,79
+"Rodoviário","Natal","Recife",292.1,219,81
+"Rodoviário","Natal","Maceió",545.45,382,86
+"Rodoviário","Natal","Salvador",1099.07,784,85
+"Rodoviário","Natal","Belo Horizonte",2223.64,1627,83
+"Rodoviário","Natal","Rio de Janeiro",2510.18,1832,83
+"Rodoviário","Natal","São Paulo",2809.04,2049,84
+"Rodoviário","Natal","Brasília",2217.23,1652,81
+"Rodoviário","Belém","Natal",133.51,105,77
+"Rodoviário","Belém","João Pessoa",119.78,91,81
+"Rodoviário","Belém","Recife",220.15,168,80
+"Rodoviário","Boa Vista","João Pessoa",171.14,126,83
+"Rodoviário","Boa Vista","Recife",236.99,174,83
+"Rodoviário","João Pessoa","Recife",120.61,93,80
+"Rodoviário","João Pessoa","Salvador",927.58,658,85
+"Rodoviário","João Pessoa","Belo Horizonte",2139.11,1543,84
+"Rodoviário","João Pessoa","Rio de Janeiro",2425.65,1748,84
+"Rodoviário","João Pessoa","São Paulo",2724.51,1965,85
+"Rodoviário","João Pessoa","Brasília",2241.91,1572,86
+"Rodoviário","Recife","Maceió",255.55,168,92
+"Rodoviário","Recife","Aracaju",501.32,340,89
+"Rodoviário","Recife","Salvador",809.16,570,86
+"Rodoviário","Recife","Belo Horizonte",2020.69,1456,84
+"Rodoviário","Recife","Vitória",1866.26,1358,83
+"Rodoviário","Recife","Rio de Janeiro",2307.23,1661,84
+"Rodoviário","Recife","São Paulo",2606.09,1878,85
+"Rodoviário","Recife","Curitiba",3040.56,2188,85
+"Rodoviário","Recife","Porto Alegre",3773.02,2679,86
+"Rodoviário","Recife","Campo Grande",3061.53,2158,86
+"Rodoviário","Recife","Cuiabá",3185.21,2222,86
+"Rodoviário","Recife","Goiânia",2325.84,1630,86
+"Rodoviário","Recife","Brasília",2123.5,1485,86
+"Rodoviário","São Paulo","Curitiba",440.08,331,83
+"Rodoviário","São Paulo","Florianópolis",726.59,529,86
+"Rodoviário","São Paulo","Porto Alegre",1172.57,822,88
+"Rodoviário","São Paulo","Campo Grande",993.29,666,94
+"Rodoviário","São Paulo","Cuiabá",1531.93,1074,88
+"Rodoviário","São Paulo","Goiânia",909.96,611,94
+"Rodoviário","São Paulo","Brasília",1018.53,695,93
+"Rodoviário","Belém","Maceió",111.64,86,80
+"Rodoviário","Campo Grande","Maceió",161.42,128,77
+"Rodoviário","Campo Grande","Aracaju",137.38,109,77
+"Rodoviário","Maceió","Aracaju",273.56,199,83
+"Rodoviário","Maceió","Salvador",581.4,428,82
+"Rodoviário","Maceió","Belo Horizonte",1792.93,1313,83
+"Rodoviário","Maceió","Rio de Janeiro",2079.47,1518,83
+"Rodoviário","Maceió","São Paulo",2378.33,1735,84
+"Rodoviário","Maceió","Curitiba",2812.8,2045,84
+"Rodoviário","Maceió","Porto Alegre",3545.26,2537,85
+"Rodoviário","Maceió","Campo Grande",2833.77,2015,85
+"Rodoviário","Maceió","Brasília",1895.74,1342,85
+"Rodoviário","Aracaju","Salvador",327.17,247,81
+"Rodoviário","Aracaju","Belo Horizonte",1538.7,1132,82
+"Rodoviário","Aracaju","Rio de Janeiro",1825.24,1337,83
+"Rodoviário","Aracaju","São Paulo",2124.1,1554,84
+"Rodoviário","Aracaju","Porto Alegre",3291.03,2356,85
+"Rodoviário","Aracaju","Goiânia",1843.85,1306,85
+"Rodoviário","Aracaju","Brasília",1641.5,1161,85
+"Rodoviário","Curitiba","João Pessoa",3159.03,2275,85
+"Rodoviário","Curitiba","Vitória",1374.04,1056,81
+"Rodoviário","Curitiba","Florianópolis",301.87,222,85
+"Rodoviário","Curitiba","Porto Alegre",747.86,516,89
+"Rodoviário","Curitiba","Campo Grande",1002.28,693,89
+"Rodoviário","Curitiba","Cuiabá",1672.11,1201,85
+"Rodoviário","Curitiba","Goiânia",1198.66,840,88
+"Rodoviário","Curitiba","Brasília",1341.17,939,89
+"Rodoviário","Palmas","Rio de Janeiro",1237.62,888,87
+"Rodoviário","Palmas","São Paulo",809.31,581,86
+"Rodoviário","Palmas","Curitiba",367.61,261,86
+"Rodoviário","Palmas","Campo Grande",937.52,669,85
+"Rodoviário","Palmas","Cuiabá",1641.46,1182,85
+"Rodoviário","Salvador","Belo Horizonte",1343.27,988,83
+"Rodoviário","Salvador","Vitória",1173.11,873,82
+"Rodoviário","Salvador","Rio de Janeiro",1629.81,1192,83
+"Rodoviário","Salvador","São Paulo",1928.67,1409,84
+"Rodoviário","Salvador","Curitiba",2363.14,1719,84
+"Rodoviário","Salvador","Porto Alegre",3095.6,2211,86
+"Rodoviário","Salvador","Goiânia",1648.42,1161,86
+"Rodoviário","Salvador","Brasília",1446.08,1016,86
+"Rodoviário","Florianópolis","Salvador",2649.74,1916,85
+"Rodoviário","Florianópolis","Porto Alegre",459.02,310,91
+"Rodoviário","Florianópolis","Goiânia",1521.56,1051,90
+"Rodoviário","Florianópolis","Brasília",1656.36,1141,91
+"Rodoviário","Campo Grande","Cuiabá",704.32,515,85
+"Rodoviário","Campo Grande","Goiânia",841.08,556,91
+"Rodoviário","Campo Grande","Brasília",1046.39,708,90
+"Rodoviário","Cuiabá","Teresina",2745.28,1916,86
+"Rodoviário","Cuiabá","Natal",3278.99,2390,83
+"Rodoviário","Cuiabá","João Pessoa",3303.71,2310,86
+"Rodoviário","Cuiabá","Aracaju",2703.28,1899,86
+"Rodoviário","Cuiabá","Goiânia",898.6,627,87
+"Rodoviário","Cuiabá","Brasília",1065.38,745,87
+"Rodoviário","Rio Branco","Cuiabá",278.08,229,74
+"Rodoviário","Goiânia","Brasília",206.01,154,84
+"Rodoviário","Belo Horizonte","Vitória",514.24,395,78
+"Rodoviário","Belo Horizonte","Rio de Janeiro",438.21,331,83
+"Rodoviário","Belo Horizonte","São Paulo",586.15,428,87
+"Rodoviário","Belo Horizonte","Curitiba",1020.59,737,86
+"Rodoviário","Belo Horizonte","Florianópolis",1307.09,936,87
+"Rodoviário","Belo Horizonte","Porto Alegre",1753.08,1229,88
+"Rodoviário","Belo Horizonte","Campo Grande",1269.53,893,86
+"Rodoviário","Belo Horizonte","Cuiabá",1589.11,1127,86
+"Rodoviário","Belo Horizonte","Goiânia",875.05,554,98
+"Rodoviário","Belo Horizonte","Brasília",744.64,479,97
+"Rodoviário","Porto Alegre","Belém",3825.5,3159,73
+"Rodoviário","Porto Alegre","Palmas",2661.46,2009,80
+"Rodoviário","Porto Alegre","Campo Grande",1422.86,1067,81
+"Rodoviário","Porto Alegre","Cuiabá",2126.8,1580,82
+"Rodoviário","Porto Alegre","Goiânia",1824.33,1300,85
+"Rodoviário","Porto Alegre","Brasília",2102.34,1436,91
+"Rodoviário","Porto Velho","Rio Branco",509.22,394,78
+"Rodoviário","Porto Velho","Belém",2553.83,2535,60
+"Rodoviário","Porto Velho","Fortaleza",3659.39,3324,66
+"Rodoviário","Porto Velho","Recife",4627.88,3432,81
+"Rodoviário","Porto Velho","Belo Horizonte",3031.67,2335,78
+"Rodoviário","Porto Velho","Vitória",3545.19,2725,78
+"Rodoviário","Porto Velho","Rio de Janeiro",3396.27,2584,80
+"Rodoviário","Porto Velho","São Paulo",2974.5,2276,79
+"Rodoviário","Porto Velho","Curitiba",3114.71,2413,78
+"Rodoviário","Porto Velho","Campo Grande",2146.93,1724,75
+"Rodoviário","Porto Velho","Cuiabá",1445.41,1214,72
+"Rodoviário","Porto Velho","Goiânia",2341.26,1837,77
+"Rodoviário","Porto Velho","Brasília",2508.03,1955,77
+"Rodoviário","Rio Branco","Belém",3063.05,2927,63
+"Rodoviário","Rio Branco","São Paulo",3480.34,2665,79
+"Rodoviário","Rio Branco","Brasília",3013.86,2344,77
+"Rodoviário","Manaus","Boa Vista",745.36,654,69
+"Rodoviário","Belém","Palmas",1211.67,1201,61
+"Rodoviário","Belém","São Luís",793.17,636,75
+"Rodoviário","Belém","Teresina",906.8,730,75
+"Rodoviário","Belém","Fortaleza",1538.34,1135,81
+"Rodoviário","Belém","Recife",2061.68,1561,79
+"Rodoviário","Belém","Salvador",2058.69,1595,78
+"Rodoviário","Belém","Belo Horizonte",2888.74,2180,80
+"Rodoviário","Belém","Rio de Janeiro",3318.55,2501,80
+"Rodoviário","Belém","São Paulo",2911.08,2475,72
+"Rodoviário","Belém","Cuiabá",2478.47,2056,72
+"Rodoviário","Belém","Goiânia",2001.16,1862,65
+"Rodoviário","Belém","Brasília",2494.02,1842,81
+"Rodoviário","Palmas","Belo Horizonte",1525.66,1166,80
+"Rodoviário","Palmas","Rio de Janeiro",1955.47,1487,81
+"Rodoviário","Palmas","São Paulo",1747.04,1324,81
+"Rodoviário","Palmas","Curitiba",2035.78,1552,80
+"Rodoviário","Palmas","Goiânia",837.12,711,71
+"Rodoviário","Palmas","Brasília",810.54,699,70
