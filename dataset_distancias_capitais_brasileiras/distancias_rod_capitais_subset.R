@@ -10,7 +10,7 @@
 # Isso baixa um .csv com todas as ligações aéres, rodoviárias, hidroviárias e hidro-rodoviárias entre todos os municípios do Brasil
 # O script abaixo filtra esse dataset e cria um subset apenas das distâncias rodoviárias entre as capitais
 # =============================================================================
- 
+
 # --- 1. PACOTES --------------------------------------------------------------
 library(dplyr)
 library(ggplot2)
@@ -102,13 +102,8 @@ unique(D_capitais$nome_d)
 
 # Checar capitais faltantes
 setdiff(capitais, unique(c(D_capitais$nome_o, D_capitais$nome_d)))
+# Macapá como capital faltante por não existirem rotas rodoviárias para essa capital
 
-# Checar se Macapá aparece em outros tipos de via que não Rodoviária
-D %>% filter(nome_o == capitais, nome_d == "Macapá")
-D %>% filter(nome_o == "Macapá", nome_d == capitais)
-
+# --- 9. EXPORTAR DATASET -------
 # Exportar dataset
-#write.csv(D_capitais, "subset_distancias_capitais_br.csv", row.names = FALSE)
-
-# Importar dataset
-#C <- read.csv("subset_distancias_capitais_br.csv")
+#write.csv(D_capitais, "distancias_rod_capitais_subset.csv", row.names = FALSE)
