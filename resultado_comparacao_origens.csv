@@ -1,0 +1,11 @@
+﻿origem,custo_km,trajeto
+SaoPaulo,14090.0,SaoPaulo -> Curitiba -> PortoAlegre -> RioDeJaneiro -> BeloHorizonte -> Brasilia -> Salvador -> Recife -> Fortaleza -> Manaus -> SaoPaulo
+RioDeJaneiro,14460.0,RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> BeloHorizonte -> Brasilia -> Salvador -> Recife -> Fortaleza -> Manaus -> RioDeJaneiro
+BeloHorizonte,14190.0,BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Brasilia -> Salvador -> Recife -> Fortaleza -> Manaus -> BeloHorizonte
+Brasilia,14110.0,Brasilia -> BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Salvador -> Recife -> Fortaleza -> Manaus -> Brasilia
+Curitiba,13820.0,Curitiba -> SaoPaulo -> RioDeJaneiro -> BeloHorizonte -> Brasilia -> Salvador -> Recife -> Fortaleza -> Manaus -> PortoAlegre -> Curitiba
+PortoAlegre,13820.0,PortoAlegre -> Curitiba -> SaoPaulo -> RioDeJaneiro -> BeloHorizonte -> Brasilia -> Salvador -> Recife -> Fortaleza -> Manaus -> PortoAlegre
+Salvador,13970.0,Salvador -> Recife -> Fortaleza -> Brasilia -> BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Manaus -> Salvador
+Fortaleza,13960.0,Fortaleza -> Recife -> Salvador -> BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Brasilia -> Manaus -> Fortaleza
+Manaus,13970.0,Manaus -> Salvador -> Recife -> Fortaleza -> Brasilia -> BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Manaus
+Recife,14380.0,Recife -> Fortaleza -> Salvador -> BeloHorizonte -> RioDeJaneiro -> SaoPaulo -> Curitiba -> PortoAlegre -> Brasilia -> Manaus -> Recife
