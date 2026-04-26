@@ -81,4 +81,74 @@ print("=" * 50)                                                             # im
 print(f"Cidade de início: {melhor_origem}")                                 # imprime a cidade de origem que gerou a melhor rota
 print(f"Trajeto: {' → '.join(melhor_trajeto)}")                             # imprime o caminho completo da melhor rota
 print(f"Custo total: {melhor_custo:.0f} km")                                # imprime o custo total da melhor rota
-print("=" * 50 + "\n")                                                      # imprime frufru
+print("=" * 50 + "\n") 
+
+
+def testar_todas_cidades(cidades, distancias):
+    resultados = []
+
+    print("\n" + "=" * 50)
+    print("TESTANDO TODAS AS CIDADES COMO ORIGEM")
+    print("=" * 50)
+
+    for cidade_inicio in cidades:
+        print(f"\nIniciando em: {cidade_inicio}")
+        print("-" * 40)
+
+        trajeto, custo_total = vizinho_mais_proximo(
+            cidades, distancias, cidade_inicio
+        )
+
+        resultados.append({
+            "cidade_inicio": cidade_inicio,
+            "trajeto": trajeto,
+            "custo": custo_total
+        })
+
+        print(f"Custo total: {custo_total:.0f} km")
+
+    # encontrar melhor
+    melhor = min(resultados, key=lambda x: x["custo"])
+
+    print("\n" + "=" * 50)
+    print("MELHOR RESULTADO")
+    print("=" * 50)
+
+    print(f"Cidade inicial: {melhor['cidade_inicio']}")
+    print(f"Custo: {melhor['custo']:.0f} km")
+    print(f"Trajeto: {' → '.join(melhor['trajeto'])}")
+
+    return resultados, melhor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     # imprime frufru
